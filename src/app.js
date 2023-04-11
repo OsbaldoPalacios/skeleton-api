@@ -1,15 +1,31 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 
-const app = express()
+const db = require('./utils/database');
+const initModels = require('./models/initModels');
 
-app.use(express.json())
-app.use(cors())
+const app = express();
+
+const PORT = process.env.PORT || 3000
+
+db.authenticate()
+    .then( () => console.log('Database Authenticated'))
+    .catch(err => console.log(err))
+
+db.sync()
+    .then( () => console.log('Database Synced!'))
+    .catch(err => console.log(err))
+
+initModels();
+
+app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.status(200).json({message: 'Server Ok!'})
-})
+});
 
-app.listen(9000, () => {
-    console.log('Server started at port 9000')
-})
+app.listen(PORT, () => {
+    console.log(`Server started at port ${PORT}`)
+});
