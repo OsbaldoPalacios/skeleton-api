@@ -8,23 +8,40 @@ const Users = db.define('users', {
     },
     firstName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [3,255]
+        }
     },
     lastName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            len: [3,255]
+        }
     },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
+            len: [8, 255],
             isEmail: true
         }
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    birthday: {
+        type: DataTypes.DATEONLY
+    },
+    phone: {
+        type: DataTypes.STRING
+    },
+    role: {
+        type: DataTypes.ENUM('normal', 'admin', 'superadmin'),
+        defaultValue: 'normal'
     }
 });
 
