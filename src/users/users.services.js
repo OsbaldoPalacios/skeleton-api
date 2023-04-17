@@ -12,7 +12,7 @@ const getAllUsers = (req, res) => {
 }
 
 const getUserById = (req, res) => {
-    const id = Number(req.params.id)
+    const id = req.params.id
     userControllers.findUserById(id)
         .then(data => {
             //? En caso de que data no exista (el usuario no exista)
@@ -39,7 +39,7 @@ const postNewUser = (req, res) => {
 
 const patchUser = (req, res) => {
 
-    const id = Number(req.params.id) 
+    const id = req.params.id 
     const userObj = req.body 
 
     userControllers.updateUser(id, userObj)

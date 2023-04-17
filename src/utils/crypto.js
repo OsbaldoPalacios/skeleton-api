@@ -6,8 +6,8 @@ const hashPassword = (plainPassword) => {
 };
 
 //? Retorna un booleano
-const comparePassword = (plainPassword, hashPassword) => {
-    const data = bcrypt.compareSync(plainPassword, hashPassword)
+const comparePassword = (plainPassword, hashedPassword) => {
+    const data = bcrypt.compareSync(plainPassword, hashedPassword)
     return data
 };
 
