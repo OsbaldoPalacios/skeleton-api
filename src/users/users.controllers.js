@@ -26,7 +26,7 @@ const findUserByEmail = async (email) => {
 }
 
 const createUser = async(userObj) => {
-    const newUser = await Users.create({
+    const newUser = {
         id: uuid.v4(),
         firstName: userObj.firstName,
         lastName: userObj.lastName,
@@ -34,8 +34,9 @@ const createUser = async(userObj) => {
         password: hashPassword(userObj.password),
         birthday: userObj.birthday,
         phone: userObj.phone
-    })
-    return newUser
+    }
+    const data = await Users.create(newUser)
+    return data
 }
 
 const updateUser = async(id, userObj) => {

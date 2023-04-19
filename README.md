@@ -16,3 +16,8 @@ Login process
 - Busqueda por email encontramos toda la info del usuario
 - Id, la password encriptada y role
 - Validar si la password es correcta
+
+/api/v1/products/:productId/addToCart
+id
+token
+isActive
