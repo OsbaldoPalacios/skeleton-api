@@ -15,7 +15,7 @@ const postLogin = (req, res) => {
 
             res.status(200).json({token})
         })
-        .catch(err => res.status(400).json(err)) 
+        .catch(err => res.status(400).json({message: 'Bad request', err:err.message})) 
 }
 
 module.exports = postLogin
