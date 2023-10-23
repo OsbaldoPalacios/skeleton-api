@@ -18,7 +18,7 @@ app.use(express.json());
 //? Enable cors
 app.use(cors());
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 4000
 
 //? Authenticate DB
 db.authenticate()
